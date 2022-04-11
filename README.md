@@ -68,3 +68,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### xApi
+
+can track way more events like clicks, Tab changes etc. then scorm (older version of xapi)
+Needs a LRS (Learning Record Store)
+Stored as JSON (predefined)
+e.g.
+```json
+{
+  "Verb": "test",
+  "Actor": "test",
+  "Object": "test",
+  "Activity": "test",
+  "Additional Properties" : "test"
+}
+```
+
+![ecosystem](res/xAPIMetadata.jpg)
+
+
+LMS (learning management store)
+LRS (Learning record Store)
+
+![ecosystem](res/ecosystem-inlms-500x375.png)
+
+
+
+LRS: 
+[Learning Locker](https://github.com/LearningLocker/learninglocker) (Open Source) (unmaintained)
+[ADL_LRS](https://adlnet.github.io/) (Python based, uses docker, [api](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Communication.md#datatransfer)) 
+[yetanalytics](https://www.sqllrs.com/) (uses docker, [api](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Communication.md#datatransfer)) 
