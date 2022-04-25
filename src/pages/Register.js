@@ -7,11 +7,13 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { Stack, TextField} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+const networkmanager = require("../manager/Networkmanager").default.instance;
 
 export default function Register() {
     let navigate = useNavigate();
 
     function handleClick() {
+        networkmanager.sendStatement("register","register a new user")
         navigate("/");
     }
     const register = (

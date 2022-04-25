@@ -4,6 +4,7 @@ import {AppBar, Divider, Drawer, Grid, IconButton, List, ListItem, ListItemText,
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import MenuIcon from '@mui/icons-material/Menu';
+const networkmanager = require("../manager/Networkmanager").default.instance;
 
 export default function Dashboard() {
 
@@ -21,7 +22,8 @@ export default function Dashboard() {
      * @param topic {string}
      */
     const handleMenuClick = (topic)=> {
-        //TODO send to server
+        networkmanager.sendStatement(`click button ${topic}`,"clicking dummy button")
+
     }
 
     /**
@@ -29,8 +31,7 @@ export default function Dashboard() {
      * @param topic {string}
      */
     const handleTopicClick = (topic) =>{
-       //TODo send to Server
-
+        networkmanager.sendStatement(`click button ${topic}`,"clicking dummy button")
 
     }
 
@@ -43,7 +44,7 @@ export default function Dashboard() {
         >
             <List>
                 {['Courses', 'Calendar', 'Mails', 'Personal'].map((text, index) => (
-                    <ListItem button key={text} onClick={handleMenuClick(text)}>
+                    <ListItem button key={text} onClick={()=>handleMenuClick(text)}>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
@@ -51,7 +52,7 @@ export default function Dashboard() {
             <Divider />
             <List>
                 {['Hardware', 'Math', 'Programming'].map((text, index) => (
-                    <ListItem button key={text} onClick={handleMenuClick(text)}>
+                    <ListItem button key={text} onClick={()=>handleMenuClick(text)}>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
@@ -87,7 +88,7 @@ export default function Dashboard() {
                 <Stack>
                     {
                         mappedList.map((item)=>(
-                                <Button style={{marginTop:"2%"}} variant="contained" onClick={handleTopicClick(item.toString())}>Test {item}</Button>
+                                <Button style={{marginTop:"2%"}} variant="contained" onClick={()=>handleTopicClick(item.toString())}>Test {item}</Button>
                         ))
                     }
                 </Stack>

@@ -7,11 +7,14 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import {Grid, Stack, TextField} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+const networkmanager = require("../manager/Networkmanager").default.instance;
 
 export default function Login() {
     let navigate = useNavigate();
 
-    function handleClick() {
+     const handleClick = async () => {
+         console.log("sending")
+        await networkmanager.sendStatement("login","entering username and password")
         navigate("/dashboard");
     }
 
@@ -33,7 +36,7 @@ export default function Login() {
                     </Grid>
                 </Grid>
             </div>
-            <CardActions style={{display:"flex",justifyContent:"center"}}><Button onClick={handleClick} variant="contained">Login</Button></CardActions>
+            <CardActions style={{display:"flex",justifyContent:"center"}}><Button onClick={()=>handleClick()} variant="contained">Login</Button></CardActions>
 
         </Stack>
     )
