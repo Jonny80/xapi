@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import {Grid, Stack, TextField} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 const networkmanager = require("../manager/Networkmanager").default.instance;
+const authmanager = require("../manager/Authmanager").default.instance;
 
 export default function Login() {
 
@@ -20,6 +21,7 @@ export default function Login() {
          console.log("sending")
          let res = await networkmanager.login(mail,password);
          if (res){
+             authmanager.user = mail;
              await networkmanager.sendStatement("login","entering username and password")
              navigate("/dashboard");
          }
