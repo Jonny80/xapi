@@ -13,7 +13,6 @@ export default function Login() {
     let navigate = useNavigate();
 
      const handleClick = async () => {
-         console.log("sending")
         await networkmanager.sendStatement("login","entering username and password")
         navigate("/dashboard");
     }
@@ -37,7 +36,6 @@ export default function Login() {
                 </Grid>
             </div>
             <CardActions style={{display:"flex",justifyContent:"center"}}><Button onClick={()=>handleClick()} variant="contained">Login</Button></CardActions>
-
         </Stack>
     )
 

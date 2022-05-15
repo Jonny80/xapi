@@ -88,7 +88,10 @@ export default function Dashboard() {
                 <Stack>
                     {
                         mappedList.map((item)=>(
-                                <Button style={{marginTop:"2%"}} variant="contained" onClick={()=>handleTopicClick(item.toString())}>Test {item}</Button>
+                                <Button style={{marginTop:"2%"}}
+                                        variant="contained"
+                                        onClick={()=>handleTopicClick(item.toString())}>Test {item}
+                                </Button>
                         ))
                     }
                 </Stack>
