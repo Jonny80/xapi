@@ -4,20 +4,25 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 /**
- *
+ * displays a button to open a drawer which contains a table with dummy data
  * @param data {{
  *     name:string,
  *     credits:number,
  *     art:string,
  *     semester:number
  * }[]}
+ * @param style {any}
+ * @return {JSX.Element}
  */
-export default function CDrawer(data) {
+const CDrawer = ({data, style}) =>{
     const [drawer,setDrawer] = useState(false);
     const toggleDrawer = ()=>{
         setDrawer(!drawer)
     }
-
+    /**
+     * table of courses
+     * @return {JSX.Element}
+     */
     const drawerContent = () =>(
         <Box role={"presentation"} onClick={toggleDrawer}>
             <TableContainer component={"Paper"}>
@@ -48,8 +53,9 @@ export default function CDrawer(data) {
     )
 
     return(
-        <div>
-            <Button onClick={toggleDrawer}>Medieninformatik</Button>
+        <div style={style}>
+            <Button variant="contained" size={"large"}
+                    disableElevation onClick={toggleDrawer}>Medieninformatik</Button>
             <Drawer anchor={"top"} open={drawer}>
                 {drawerContent()}
             </Drawer>
@@ -58,3 +64,5 @@ export default function CDrawer(data) {
 
 
 }
+
+export default CDrawer;

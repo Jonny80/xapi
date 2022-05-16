@@ -26,3 +26,17 @@ export const DrawerData = [
         art: "Pflichtmodul"
     }
 ]
+export const DemoNews = [{
+    header:"Hello World",
+    description:"Hello World"
+},{
+    header:"I like trains",
+    description: "The TGV only needs 2.5h from Stuttgart to Paris"
+},{
+    header:"Where to upload mp3 file",
+    description: "Student does not know where to upload the recorded meeting from last week"
+},{
+    header:"Is light Beer beer?",
+    description: "A fierce discussion broke out whether " +
+        "light beer can be considered as real beer rather than lemonade"
+}]
