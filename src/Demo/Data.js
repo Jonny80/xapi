@@ -1,10 +1,23 @@
-export const DemoSteps = ["Apl","Apl 2","SP"]
+export const DemoSteps = [{
+    name:"GIS",
+    steps:["APL","APL2","SP"],
+    step:2
+},
+    {
+        name:"Mathe",
+        steps:["Beleg","SP"],
+        step:1
+    },{
+    name:"GdI",
+        steps:["APL","PVL","SP"],
+        step:3
+    }]
 export const DrawerData = [
     {
       name:"GIS",
       credits:5,
         semester:3,
-        art:"Pflichtmodul"
+        art:"Pflichtmodul",
     },
     {
         name:"Mathe",

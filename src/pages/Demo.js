@@ -1,8 +1,9 @@
 import React from "react";
 import CDrawer from "../Components/CDrawer";
-import {DemoNews, DrawerData} from "../Demo/Data";
+import {DemoNews, DemoSteps, DrawerData} from "../Demo/Data";
 import {AppBar, Container, Grid, Typography} from "@mui/material";
 import CNews from "../Components/CNews";
+import CStepper from "../Components/CStepper";
 
 export default function Demo() {
 
@@ -22,6 +23,11 @@ export default function Demo() {
                 }}>
                     <CNews data={DemoNews}/>
                 </div>
+            <div style={{width:"50%"}}>
+                {DemoSteps.map(step=>{
+                    return <CStepper data={step}/>
+                })}
+            </div>
 
         </div>
     )
