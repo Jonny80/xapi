@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CardMedia, MobileStepper} from "@mui/material";
+import {CardHeader, CardMedia, MobileStepper} from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,7 +8,11 @@ import Card from "@mui/material/Card";
 
 /**
  * Creates a Carousel of data
- * @param data {any} data to be displayed at Carousel
+ * @param data {{
+ *     header:string,
+ *     description:string,
+ *     date:string
+ * }[]} data to be displayed at Carousel
  * @return {JSX.Element}
  * @constructor
  */
@@ -36,6 +40,8 @@ const CNews = ({data}) =>{
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {data[activeStep].header}
+                    </Typography><Typography gutterBottom variant="h7" component="div">
+                        {data[activeStep].date}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {data[activeStep].description}

@@ -3,21 +3,24 @@ import Box from "@mui/material/Box";
 import {CardHeader, Step, StepLabel, Stepper} from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
 
 /**
  *
  * @param data {{
  *     name:string,
  *     steps:string[],
- *     step:number
+ *     step:number,
+ *     date:string
  * }}
+ * @param style
  * @return {JSX.Element}
  * @constructor
  */
-const CStepper = ({data}) =>{
+const CStepper = ({data,style}) =>{
     return(
-        <Card>
-            <CardHeader>{data.name}</CardHeader>
+        <Card style={style}>
+            <CardHeader title={data.name}/>
             <CardContent>
                 <Box sx={{ width: '100%' }}>
                     <Stepper activeStep={data.step} >
@@ -27,6 +30,9 @@ const CStepper = ({data}) =>{
                             </Step>
                         ))}
                     </Stepper>
+                    <React.Fragment>
+                        <Typography sx={{ mt: 2, mb: 1 }}>{data.date}</Typography>
+                    </React.Fragment>
                 </Box>
             </CardContent>
         </Card>
