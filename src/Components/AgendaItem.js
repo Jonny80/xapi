@@ -1,6 +1,6 @@
 import React from "react";
 import {ListItem, ListItemText, Typography} from "@mui/material";
-
+import "./AgendaItem.css"
 /**
  *
  * @param header {string}
@@ -12,7 +12,7 @@ import {ListItem, ListItemText, Typography} from "@mui/material";
 const AgendaItem = ({header,body,date}) =>{
 
     return (
-        <ListItem alignItems="flex-start">
+        <ListItem alignItems="flex-start" className="test">
             <ListItemText
                 primary={header}
                 secondary={
