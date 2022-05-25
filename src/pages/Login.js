@@ -18,12 +18,13 @@ export default function Login() {
     let navigate = useNavigate();
 
      const handleClick = async () => {
-         console.log("sending")
+         navigate("/demo");
+
          let res = await networkmanager.login(mail,password);
          if (res){
              authmanager.user = mail;
              await networkmanager.sendStatement("login","entering username and password")
-             navigate("/dashboard");
+             navigate("/demo");
          }
 
     }

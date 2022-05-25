@@ -31,7 +31,7 @@ const CStepper = ({data,style}) =>{
                         ))}
                     </Stepper>
                     <React.Fragment>
-                        <Typography sx={{ mt: 2, mb: 1 }}>{data.date}</Typography>
+                        <Typography sx={{ mt: 2, mb: 1 }}>Nächste Abgabe :{data.date}</Typography>
                     </React.Fragment>
                 </Box>
             </CardContent>

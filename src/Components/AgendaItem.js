@@ -25,6 +25,7 @@ const AgendaItem = ({header,body,date}) =>{
                         >
                             {date}
                         </Typography>
+                        <br/>
                         {body}
                     </React.Fragment>
                 }
