@@ -56,7 +56,7 @@ const CDrawer = ({data, style}) =>{
         <div style={style}>
             <Button variant="contained" size={"large"}
                     disableElevation onClick={toggleDrawer}>Medieninformatik</Button>
-            <Drawer anchor={"top"} open={drawer}>
+            <Drawer anchor={"right"} open={drawer}>
                 {drawerContent()}
             </Drawer>
         </div>

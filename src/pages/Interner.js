@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Studienablaufplan from "./Studienablaufplan";
 
 import {
@@ -12,7 +12,7 @@ const authmanager = require("../manager/Authmanager").default.instance;
 
 
 
-export default function Interner({ userNick, userId,setModul}) {
+export default function Interner({setModul}) {
   var Minio = require("minio");
   var minioClient = new Minio.Client({
     endPoint: "141.56.132.18",
@@ -25,6 +25,8 @@ export default function Interner({ userNick, userId,setModul}) {
 
   const [userData, setUserData] = React.useState(null);
   const [moduls, setModuls] = React.useState([]);
+  const [userId,setUserId] = useState(authmanager.userID);
+  const [userNick,setUserNick] = useState(authmanager.user);
 
   const [time, setTime] = React.useState(Date.now());
 
