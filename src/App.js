@@ -4,11 +4,13 @@ import {
   Route,
 } from "react-router-dom"
 import './App.css';
+import React from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Demo from "./pages/Demo";
 import Test from "./pages/test";
+import Interner from "./pages/Interner";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
             <Route path={"/dashboard"} element={<Dashboard/>}/>
             <Route path={"/demo"} element={<Demo/>} />
             <Route path={"/test"} element={<Test/>}/>
+            <Route path={"/interner"} element={<Interner/>} />
         </Routes>
       </BrowserRouter>
   );

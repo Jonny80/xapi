@@ -8,5 +8,6 @@ export default class Authmanager {
 
     constructor() {
         this.user = "John Smith";
+        this.userID = null;
     }
 }
