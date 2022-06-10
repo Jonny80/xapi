@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CDrawer from "../Components/CDrawer";
 import {DemoNews, DemoSteps, DrawerData} from "../Demo/Data";
 import {AppBar, Container, Grid, Typography} from "@mui/material";
@@ -6,8 +6,14 @@ import CNews from "../Components/CNews";
 import CStepper from "../Components/CStepper";
 import Agenda from "../Components/Agenda";
 import Box from "@mui/material/Box";
+const authmanager = require("../manager/Authmanager").default.getInstance();
 
 export default function Demo() {
+
+    useEffect(()=>{
+        console.log(authmanager.user);
+        console.log(authmanager.userID)
+    },[])
 
 
     return(

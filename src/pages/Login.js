@@ -7,7 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import {Grid, Stack, TextField} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-const authmanager = require("../manager/Authmanager").default.instance;
+const authmanager = require("../manager/Authmanager").default.getInstance();
 const Minio = require("minio");
 const sha512 = require("js-sha512");
 
@@ -78,9 +78,11 @@ export default function Login() {
 
                     for (var i = 0; i < users.length; i++) {
                         if (users[i].username === mail && users[i].passwort === hash) {
-                            authmanager.userID = users[i].id;
-                            authmanager.user = users[i].username;
-                            navigate("/demo")
+                            authmanager.setUserId(users[i].id);
+                            authmanager.setUserName(users[i].username);
+                            console.log(users[i].id);
+                            console.log(users[i].username);
+                            navigate("/interner")
                         }
                     }
                 });

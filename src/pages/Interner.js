@@ -8,7 +8,7 @@ import {
   Link,
   useNavigate,
 } from "react-router-dom";
-const authmanager = require("../manager/Authmanager").default.instance;
+const authmanager = require("../manager/Authmanager").default.getInstance();
 
 
 

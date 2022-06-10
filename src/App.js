@@ -4,15 +4,23 @@ import {
   Route,
 } from "react-router-dom"
 import './App.css';
-import React from "react";
+import React, {useState} from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Demo from "./pages/Demo";
 import Test from "./pages/test";
 import Interner from "./pages/Interner";
+import Modul from "./pages/Modul";
+const authmanager = require("./manager/Authmanager").default.getInstance();
 
 function App() {
+
+    const [modul,setModul] = useState();
+    function setMod(value) {
+        setModul(value);
+
+    }
   return (
       <BrowserRouter>
         <Routes>
@@ -21,7 +29,8 @@ function App() {
             <Route path={"/dashboard"} element={<Dashboard/>}/>
             <Route path={"/demo"} element={<Demo/>} />
             <Route path={"/test"} element={<Test/>}/>
-            <Route path={"/interner"} element={<Interner/>} />
+            <Route path={"/interner"} element={<Interner setModul={setMod}/>} />
+            <Route path={"/modul"} element={<Modul userId={authmanager.userId} modul={modul}/>} />
         </Routes>
       </BrowserRouter>
   );
