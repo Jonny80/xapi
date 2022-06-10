@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Background from "../res/result.svg"
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -7,37 +7,98 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import {Grid, Stack, TextField} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-const networkmanager = require("../manager/Networkmanager").default.instance;
 const authmanager = require("../manager/Authmanager").default.instance;
+const Minio = require("minio");
+const sha512 = require("js-sha512");
+
 
 export default function Login() {
-
+    const [error,seterr] = useState("");
+    const [minioClient,setMinioClient] = useState(undefined);
+    const [hash, sethas] = React.useState("");
     const [mail,setMail] = useState("");
     const [password,setPassword] = useState("");
+    useEffect(()=>{
+        let client = new Minio.Client({
+            endPoint: "141.56.132.18",
+            port: 9000,
+            useSSL: false,
+            accessKey: "admin",
+            secretKey: "hgjkrwehg46782h87z",
+        });
+        checkMinio(client);
+        setMinioClient(client);
+    },[])
 
+
+    async function checkMinio(client) {
+        if (!client) return false;
+        client.listBuckets(function (err, buckets) {
+            if (err) {
+                console.log(err);
+                seterr("Failed to connect to server!");
+                return false;
+            }
+        });
+        return true;
+    }
+
+
+
+    function hashing(pepper) {
+        var salt = "dkgtsmhtebankmencrtiohcaik";
+        return sha512(pepper + salt);
+    }
+    function passinput(value) {
+        setPassword(value);
+        sethas(hashing(value));
+    }
     let navigate = useNavigate();
 
      const handleClick = async () => {
-         navigate("/demo");
-
-         let res = await networkmanager.login(mail,password);
-         if (res){
-             authmanager.user = mail;
-             await networkmanager.sendStatement("login","entering username and password")
-             navigate("/demo");
-         }
+        login();
 
     }
 
+    function login() {
+
+        if (`${mail}`.length > 0 && `${password}`.length > 0) {
+            var arr = [];
+            minioClient.getObject("status", "data.json", function (err, dataStream) {
+                if (err) {
+                    return console.log(err) ^ seterr("Failed to connect to server!");
+                }
+                dataStream.on("data", function (chunk) {
+                    arr.push(chunk);
+                });
+                dataStream.on("end", function () {
+                    //  console.log(arr.toString())
+                    var users = JSON.parse(arr.toString()).user;
+                    //   console.log("Redy")
+
+                    for (var i = 0; i < users.length; i++) {
+                        if (users[i].username === mail && users[i].passwort === hash) {
+                            authmanager.userID = users[i].id;
+                            authmanager.user = users[i].username;
+                            navigate("/demo")
+                        }
+                    }
+                });
+            });
+        } else {
+            seterr("Please fill in all fields!");
+        }
+    }
+
     const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+         passinput(event.target.value)
     };
     const handleMailChange = (event) => {
         setMail(event.target.value);
     };
 
 
-    const login = (
+    const loginUI = (
         <Stack spacing={2}>
             <div style={{display:"flex",justifyContent:"center"}}>Login</div>
             <div>
@@ -74,10 +135,11 @@ export default function Login() {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
         }}>
+            <label className="loginErrorLabel">{error}</label>
             <Box >
                 <Card variant="outlined">
                     <CardContent>
-                        {login}
+                        {loginUI}
                     </CardContent>
                 </Card>
             </Box>
