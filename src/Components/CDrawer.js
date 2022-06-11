@@ -13,6 +13,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import 'react-calendar/dist/Calendar.css';
 import { SystemSecurityUpdate } from "@mui/icons-material";
+import "./CDrawer.css"
+
 const authmanager = require("../manager/Authmanager").default.getInstance();
 
 /**
@@ -178,7 +180,7 @@ function pushChangedDataToServer(value){
         pushChangedDataToServer(ud)
   }
 
-  const liste=todo.map((item) => <ul><label>{item.task}-{item.ime}-{item.date}</label></ul>)
+  const liste=todo.map((item) => <ul><label className="TodoLabels">{item.task}-{item.ime}-{item.date}</label></ul>)
 
   const toggleDrawer = () => {
     setDrawer(!drawer);
