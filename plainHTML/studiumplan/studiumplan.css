@@ -1,1 +1,83 @@
-/* No CSS *//*# sourceMappingURL=studiumplan.css.map */
+:root {
+  --pill-bg: black;
+  --pill-txt: white;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans';
+  font-size: 1vw;
+  -webkit-transition: ease-in-out .5s;
+  transition: ease-in-out .5s;
+}
+
+.container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  background: #e6e6e6;
+  padding: 1em;
+}
+
+.semester {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: .5em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.pill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 2.5em;
+  padding-left: 1em;
+  padding-right: 0.5em;
+  gap: 0.5em;
+  border-radius: 2em;
+  font-size: 0.6em;
+  font-weight: normal;
+  color: var(--pill-txt);
+  background: var(--pill-bg);
+}
+
+.test {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: .2em .5em;
+  border-radius: 2em;
+  color: var(--pill-bg);
+  background: var(--pill-txt);
+  font-weight: bold;
+}
+/*# sourceMappingURL=studiumplan.css.map */

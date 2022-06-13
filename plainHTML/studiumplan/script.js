@@ -1,49 +1,98 @@
 
 class Subject {
   constructor(code, name, short, semester, tests) {
-    this.code = code;
-    this.name = name;
-    this.short = short;
-    this.semester = semester;
-    this.tests = tests;
+    this.code = code; // course-code
+    this.name = name; // full name of course
+    this.short = short; // short name of course
+    this.semester = semester; // usual semester for course
+    this.tests = tests; // all tests (see class Test)
   }
 }
 
 class Test {
-  constructor(type, result) {
-    this.type = type;
-    this.result = result;
+  constructor(type, result, factor) {
+    this.type = type; // type of test (APL, PVL, SP)
+    this.result = result; // result of test (grade)
+    this.factor = factor; // part of total grade
   }
 }
 
 const data = {
       title: "Semester",
-      amount: 3,
+      amount: 6,
       subjects: [
         [
-            new Subject("I110", "Grundlagen der Informatik", "GdI", 1, [new Test("APL")]), 
-            new Subject("I120", "Programmierung I", "Prog I", 1, [new Test("PVL"), new Test("SP")]), 
+          new Subject("E802", "Elektronik für Medieninformatiker", "EL", 1, [new Test("SP")]), 
+          new Subject("I110", "Grundlagen der Informatik I", "GdI I", 1, [new Test("APL")]), 
+          new Subject("I120", "Programmierung I", "Prog I", 1, [new Test("PVL"), new Test("SP")]),
+          new Subject("I130", "Betriebssysteme I", "BS I", 1, [new Test("PVL"), new Test("SP")]), 
+          new Subject("I350", "Grundlagen der Gestaltung", "GdG", 1, []), 
+          new Subject("I360", "Digitale Bildbearbeitung", "DBB", 1, [new Test("APL")]),
+          new Subject("I380", "Algebra und Höhere Mathematik", "Ma", 1, [new Test("SP")]),
+          new Subject("S411", "Englisch B2", "Eng", 1, [new Test("APL"), new Test("APL")])
         ],
         [
-          new Subject("I111", "Grundlagen der Informatik II", "GdI II", 1, [new Test("APL")]), 
-          new Subject("I121", "Programmierung II", "Prog II", 1, [new Test("PVL"), new Test("SP")]), 
+          new Subject("E803", "Digitale Signalverarbeitung", "DSV", 2, [new Test("PVL"), new Test("SP")]), 
+          new Subject("I310", "Grundlagen der Informatik II", "GdI II", 2, [new Test("SP")]), 
+          new Subject("I121", "Programmierung II", "Prog II", 2, [new Test("APL"), new Test("SP")]),
+          new Subject("I370", "Betriebswirtschaftslehre", "BWL", 2, [new Test("SP")]), 
+          new Subject("I350", "Grundlagen der Gestaltung", "GdG", 2, [new Test("APL")]), 
+          new Subject("I140", "Datenbanksysteme I", "DBS I", 2, [new Test("PVL"), new Test("SP")]),
+          new Subject("I380", "Algebra und Höhere Mathematik", "Ma", 2, [new Test("SP")]),
+          new Subject("S411", "Englisch B2", "Eng", 2, [new Test("APL"), new Test("APL")]),
+          new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")])
         ],
         [
-          new Subject("I112", "Grundlagen der Informatik III", "GdI III", 1, [new Test("APL")]), 
-          new Subject("I122", "Programmierung III", "Prog III", 1, [new Test("PVL"), new Test("SP")]), 
+          new Subject("E803", "Digitale Signalverarbeitung", "DSV", 2, [new Test("PVL"), new Test("SP")]), 
+          new Subject("I310", "Grundlagen der Informatik II", "GdI II", 2, [new Test("SP")]), 
+          new Subject("I121", "Programmierung II", "Prog II", 2, [new Test("APL"), new Test("SP")]),
+          new Subject("I370", "Betriebswirtschaftslehre", "BWL", 2, [new Test("SP")]), 
+          new Subject("I350", "Grundlagen der Gestaltung", "GdG", 2, [new Test("APL")]), 
+          new Subject("I140", "Datenbanksysteme I", "DBS I", 2, [new Test("PVL"), new Test("SP")]),
+          new Subject("I380", "Algebra und Höhere Mathematik", "Ma", 2, [new Test("SP")]),
+          new Subject("S411", "Englisch B2", "Eng", 2, [new Test("APL"), new Test("APL")]),
+          new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")]) 
         ],
+        [],
+        [],
+        []
 
       ]
 };
 
 
+function setup() {
+  let container = document.getElementById("pillContainer");
 
-for (i = 0; i < data.amount; i++) {
-  console.log(data.title, i+1)
-  for (j = 0; j < data.subjects[i].length; j++){
-    console.log(data.subjects[i][j].name);
-    for (k = 0; k < data.subjects[i][j].tests.length; k++) {
-      console.log(data.subjects[i][j].tests[k].type)
+  // add divs for all semesters in data
+  for (i = 0; i < data.amount; i++) {
+
+    let newSemester = document.createElement("div");
+    newSemester.classList.add("semester");
+    text = document.createTextNode(data.title + " " + (i+1))
+    newSemester.appendChild(text);
+
+    // add divs for all subjects per semester
+    for (j = 0; j < data.subjects[i].length; j++){
+
+      let newPill = document.createElement("div");
+      newPill.classList.add("pill");
+      text = document.createTextNode(data.subjects[i][j].code + " " + data.subjects[i][j].short);
+      newPill.appendChild(text);
+
+      // add divs for all tests per subject
+      for (k = 0; k < data.subjects[i][j].tests.length; k++) {
+
+        let newTest = document.createElement("div");
+        newTest.classList.add("test");
+        text = document.createTextNode(data.subjects[i][j].tests[k].type);
+        newTest.appendChild(text);
+        newPill.appendChild(newTest);
+      }
+      newSemester.appendChild(newPill);
     }
+    container.appendChild(newSemester);
   }
 }
+
+
