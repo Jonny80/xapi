@@ -1,3 +1,23 @@
-.TodoLabels{
-	background-color: aqua;
+.TodoLabels {
+  /*   background-color: #1c1b1f;
+  color: white; */
+  color: white;
+  border-radius: 10px;
+  background: #1c1b1f;
+  padding: 5px;
+  width: 100px;
+  height: 10px;
+}
+
+.kalender {
+  padding-left: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.task-list {
+  margin-bottom: 200px;
+}
+
+.Zeit {
 }
