@@ -7,10 +7,10 @@ import './App.css';
 import React, {useState} from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import Demo from "./pages/Demo";
-import Interner from "./pages/Interner";
-import Modul from "./pages/Modul";
+import Dashboard from "./unusedPages/Dashboard";
+import Demo from "./unusedPages/Demo";
+import Interner from "./unusedPages/Interner";
+import Modul from "./Components/Modul";
 import Homepage from "./pages/Homepage";
 const authmanager = require("./manager/Authmanager").default.getInstance();
 
