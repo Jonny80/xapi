@@ -12,7 +12,7 @@ function changeState(){
 }
 
   return (
-    <div>
+    <div style={{height:"105px"}}>
         <div><p id='page'>home</p> <AccountCircleIcon id="account"/>< LogoutIcon id="logout" /></div>
         <div className='subhead'><p id='name'>043 Medieninformatik</p><div onClick={changeState} className='button'>Studiengangsübersicht <KeyboardArrowDownIcon id="arrow"/></div></div>
     </div>
