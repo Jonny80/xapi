@@ -9,11 +9,16 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import Box from "@mui/material/Box";
+import div from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 import { SystemSecurityUpdate } from "@mui/icons-material";
-import "./CDrawer.css"
+import "./CDrawer.css";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const authmanager = require("../manager/Authmanager").default.getInstance();
 
@@ -29,9 +34,9 @@ const authmanager = require("../manager/Authmanager").default.getInstance();
  * @return {JSX.Element}
  */
 const CDrawer = ({ data, style }) => {
-    React.useEffect(()=>{
-        start();
-    },[])
+  React.useEffect(() => {
+    start();
+  }, []);
 
   var Minio = require("minio");
   var minioClient = new Minio.Client({
@@ -43,61 +48,64 @@ const CDrawer = ({ data, style }) => {
   });
 
   function start() {
-    console.log("starten wir")
-    
+    console.log("starten wir");
+
     var arr = [];
     var arr2 = [];
     setModuls([]);
-    
-    minioClient.getObject("status", "data.json", function (err, dataStream) {
+
+    minioClient.getObject("status", "data.json", function(err, dataStream) {
       if (err) {
         return console.log(err);
       }
-      dataStream.on("data", function (chunk) {
+      dataStream.on("data", function(chunk) {
         arr.push(chunk);
       });
-      dataStream.on("end", function () {
+      dataStream.on("end", function() {
         //  console.log(arr.toString())
         var u = JSON.parse(arr.toString()).user;
         //   console.log("Redy")
 
         for (var i = 0; i < u.length; i++) {
-            
-            if ( `${u[i].id}` === `${authmanager.userID}`) {
-                setUserData(u[i]);
-                console.log("todo")
-            
-                if(u[i].todo!==undefined){
-                    
-                    console.log(u[i].todo)
-                    setTodo(u[i].todo)
-                }
-               
-                console.log("ähhh");
+          if (`${u[i].id}` === `${authmanager.userID}`) {
+            setUserData(u[i]);
+            console.log("todo");
+
+            if (u[i].todo !== undefined) {
+              console.log(u[i].todo);
+              setTodo(u[i].todo);
+            }
+
+            console.log("ähhh");
 
             var use = u[i];
             // eslint-disable-next-line no-loop-func
-            minioClient.getObject("status","modul.json",function (err, dataStream) {
-                if (err) {
-                  return console.log(err);
-                }
-                dataStream.on("data", function (chunk) {
-                  arr2.push(chunk);
-                });
-                dataStream.on("end", function () {
-                  var m = JSON.parse(arr2.toString()).module;
-                  for (var c = 0; c < m.length; c++) {
-                   try{
+            minioClient.getObject("status", "modul.json", function(
+              err,
+              dataStream
+            ) {
+              if (err) {
+                return console.log(err);
+              }
+              dataStream.on("data", function(chunk) {
+                arr2.push(chunk);
+              });
+              dataStream.on("end", function() {
+                var m = JSON.parse(arr2.toString()).module;
+                for (var c = 0; c < m.length; c++) {
+                  try {
                     if (use.module.indexOf(m[c].modulId) > -1) {
-                      console.log(m[c].modulId + m[c].modulName)
+                      console.log(m[c].modulId + m[c].modulName);
                       var tmp = moduls;
                       tmp.push(m[c]);
                       setModuls(tmp);
-                    }}catch{console.log("leeres Modul")}
+                    }
+                  } catch {
+                    console.log("leeres Modul");
                   }
-                });
-              }
-            );
+                }
+              });
+            });
           }
         }
       });
@@ -105,43 +113,43 @@ const CDrawer = ({ data, style }) => {
   }
 
   function upload(u) {
+    var t = '{"user":' + JSON.stringify(u) + "}";
+    minioClient.putObject("status", "data.json", t, t.size, function(
+      err,
+      objInfo
+    ) {
+      if (err) {
+        return console.log(err); // err should be null
+      }
+      console.log("Success", objInfo);
+    });
+  }
 
-    var t = "{\"user\":" + JSON.stringify(u) + "}"
-    minioClient.putObject('status', 'data.json', t, t.size, function (err, objInfo) {
-        if (err) {
-            return console.log(err) // err should be null
-        }
-        console.log("Success", objInfo)
-    })
-}
-
-function pushChangedDataToServer(value){
-   
+  function pushChangedDataToServer(value) {
     var arr = [];
-            minioClient.getObject('status', 'data.json', function (err, dataStream) {
-                if (err) {
-                    return console.log("Failed to connect to server!")
-                }
-                dataStream.on('data', function (chunk) {
-                    arr.push(chunk)
-                })
-                dataStream.on('end', function () {
-
-                    var reg = JSON.parse(arr.toString()).user
-                    let tochange=null;
-                    reg.map((u,i) => {
-                        if (`${u.id}` === `${value.id}`) {
-                            console.log("changed") 
-                            tochange=i; 
-                        }
-                    })
-                    if(tochange!==null){
-                        reg[tochange]=value;
-                    }
-                    upload(reg);
-                })
-            })
-}
+    minioClient.getObject("status", "data.json", function(err, dataStream) {
+      if (err) {
+        return console.log("Failed to connect to server!");
+      }
+      dataStream.on("data", function(chunk) {
+        arr.push(chunk);
+      });
+      dataStream.on("end", function() {
+        var reg = JSON.parse(arr.toString()).user;
+        let tochange = null;
+        reg.map((u, i) => {
+          if (`${u.id}` === `${value.id}`) {
+            console.log("changed");
+            tochange = i;
+          }
+        });
+        if (tochange !== null) {
+          reg[tochange] = value;
+        }
+        upload(reg);
+      });
+    });
+  }
 
   const [userData, setUserData] = React.useState(null);
   const [moduls, setModuls] = React.useState([]);
@@ -149,39 +157,59 @@ function pushChangedDataToServer(value){
   const [userNick, setUserNick] = useState(authmanager.user);
   const [kal, setkal] = useState(new Date());
 
-  const [todo,setTodo]=React.useState([]);
+  const [todo, setTodo] = React.useState([]);
   const [drawer, setDrawer] = useState(false);
 
-  function submitTask(){
+  function submitTask() {
     var date = String(kal).split(" ");
-    console.log(date[3]+"-"+date[1]+"-"+date[2])
-        let d=date[3]+"-"+date[1]+"-"+date[2]
-        let task=document.getElementById("new-task-input").value
-        let zeit=document.getElementById("zeit").value
+    console.log(date[3] + "-" + date[1] + "-" + date[2]);
+    let d = date[3] + "-" + date[1] + "-" + date[2];
+    let task = document.getElementById("new-task-input").value;
+    let zeit = document.getElementById("zeit").value;
 
-        var topush={
-            "date": d,
-            "task":task,
-            "time":zeit
-        }
-        var ud=null
-        if(userData.todo===undefined)
-        {ud=userData 
-            ud.todo=[topush]
-            setUserData(ud)
-        }else{
-             ud=userData 
-            ud.todo.push(topush)
-            setUserData(ud)	
-        }
-        let t= todo
-        t.push(topush)
-        setTodo(t)
-        pushChangedDataToServer(ud)
+    var topush = {
+      date: d,
+      task: task,
+      time: zeit,
+    };
+    var ud = null;
+    if (userData.todo === undefined) {
+      ud = userData;
+      ud.todo = [topush];
+      setUserData(ud);
+    } else {
+      ud = userData;
+      ud.todo.push(topush);
+      setUserData(ud);
+    }
+    let t = todo;
+    t.push(topush);
+    setTodo(t);
+    pushChangedDataToServer(ud);
   }
 
-  const liste=todo.map((item) => <ul><label className="TodoLabels">{item.task}-{item.ime}-{item.date}</label></ul>)
-
+  const liste = todo.map((item) => (
+    <Accordion style={{ marginBottom: "10px", borderRadius: "10px " }}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        style={{
+          background: "#171923",
+          color: "#D1D1D1",
+          borderRadius: "10px ",
+        }}
+      >
+        <div>
+          <p>{item.task}</p>
+          <p style={{ fontSize: "11px", marginTop: "-8px" }}>{item.time}</p>
+        </div>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>{item.date} und mehr info</Typography>
+      </AccordionDetails>
+    </Accordion>
+  ));
   const toggleDrawer = () => {
     setDrawer(!drawer);
   };
@@ -189,8 +217,9 @@ function pushChangedDataToServer(value){
    * table of courses
    * @return {JSX.Element}
    */
-  const drawerContent = () => (
-    <Box role={"presentation"} >
+
+  return (
+    <div>
       <div className="kalender">
         <div>
           <Calendar onChange={setkal} value={kal} />
@@ -205,17 +234,18 @@ function pushChangedDataToServer(value){
             placeholder="Was hast du vor?"
           />
           <input type="time" className="Zeit" id="zeit" placeholder="Wann?" />
-          <Button variant="contained" onClick={submitTask}>Contained</Button>
+          <Button variant="contained" onClick={submitTask}>
+            Contained
+          </Button>
         </div>
         <section className="task-list">
-          <h2>Aufgaben</h2>
+          <h2 className="">Aufgaben</h2>
           <div>
-            <ol>
-          {liste}
-          </ol></div>
+            <ol>{liste}</ol>
+          </div>
         </section>
       </div>
-    
+
       <TableContainer onClick={toggleDrawer} component={"Paper"}>
         <Table>
           <TableHead>
@@ -240,22 +270,6 @@ function pushChangedDataToServer(value){
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
-  );
-
-  return (
-    <div style={style}>
-      <Button
-        variant="contained"
-        size={"large"}
-        disableElevation
-        onClick={toggleDrawer}
-      >
-        Medieninformatik
-      </Button>
-      <Drawer anchor={"right"} open={drawer}>
-        {drawerContent()}
-      </Drawer>
     </div>
   );
 };

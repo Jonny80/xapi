@@ -82,7 +82,7 @@ export default function Login() {
                             authmanager.setUserName(users[i].username);
                             console.log(users[i].id);
                             console.log(users[i].username);
-                            navigate("/interner")
+                            navigate("/home")
                         }
                     }
                 });
