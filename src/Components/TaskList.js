@@ -18,7 +18,7 @@ export const TaskList = () => {
     {
       name: "Thomas",
       time: "12:54",
-      date: "Mon May 30 2022 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)",
+      date: new Date(),
     },
   ];
   const [list, setList] = React.useState(initialList);
@@ -40,7 +40,7 @@ export const TaskList = () => {
 
   function handleAdd() {
     const date = value.toISOString();
-    const newList = list.concat({ name, time, date });
+    const newList = list.concat({ name:name, time:time, date:value });
 
     setList(newList);
 
@@ -57,12 +57,22 @@ export const TaskList = () => {
           <div style={{fontSize:"20px",fontWeight:"bold"}}>{getMonth(date)}</div><div>{date.getFullYear()}</div>
       </div>
   }
-  function getPrevLabel() {
-      return (
-          <div >
-              Hello World
-          </div>
-      )
+
+
+  function formatDate(date) {
+      console.log(list)
+      console.log(typeof date)
+      let year = date.getFullYear();
+      let month = ("0" + (date.getMonth() + 1)).slice(-2);
+      let day = ("0" + date.getDate()).slice(-2);
+      let hour = date.getHours();
+      let minute = date.getMinutes();
+      if (minute < 10 ){
+          minute = "0" + minute;
+      }
+      return year + "-" + day + "-" + month + " " + hour + ":" + minute + " Uhr";
+
+
   }
 
   return (
@@ -129,7 +139,7 @@ export const TaskList = () => {
               </div>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>{item.date} und mehr info</Typography>
+              <Typography>{formatDate(item.date)} {item.name}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}
