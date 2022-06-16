@@ -108,3 +108,5 @@ export const Studienplandata = {
 
     ]
 };
+
+export const months = ["January", "Febuary", "March", "April", "Mai", "June", "July", "August", "September", "October", "November", "December"];

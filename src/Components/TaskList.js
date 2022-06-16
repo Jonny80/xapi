@@ -1,15 +1,20 @@
 import React from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import "../Components/customCalendar.css"
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from "@mui/material/Button";
+import {months} from "../Demo/Data";
+
 
 export const TaskList = () => {
-  const initialList = [
+
+    const initialList = [
     {
       name: "Thomas",
       time: "12:54",
@@ -44,13 +49,34 @@ export const TaskList = () => {
     setTime("");
   }
 
+  function getMonth(date) {
+      return months[date.getMonth()];
+  }
+  function getHeader(date) {
+      return <div style={{display:"flex",flexDirection:"row",alignItems:"baseline"}}>
+          <div style={{fontSize:"20px",fontWeight:"bold"}}>{getMonth(date)}</div><div>{date.getFullYear()}</div>
+      </div>
+  }
+  function getPrevLabel() {
+      return (
+          <div >
+              Hello World
+          </div>
+      )
+  }
+
   return (
     <div>
       <form
         onSubmit={handleAdd}
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <Calendar value={value} onChange={setDate} />
+        <Calendar next2Label={null} prev2Label={null} value={value}
+                  navigationLabel={({ date, label, locale, view }) => getHeader(date)}
+                  onChange={setDate}
+                  prevLabel={<ArrowBackIosNewIcon />}
+                  nextLabel={<ArrowForwardIosIcon/>}
+        />
         <input
           type="text"
           value={name}

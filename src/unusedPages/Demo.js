@@ -20,7 +20,7 @@ export default function Demo() {
   }, []);
 
   return (
-    <div style={{ height: "100%", background: "#E6E6E6" }}>
+    <div style={{ height: "100", background: "#E6E6E6" }}>
       <AppBar
         style={{ alignItems: "center", justifyContent: "center" }}
         position={"static"}
@@ -29,18 +29,6 @@ export default function Demo() {
           <CDrawer style={{}} data={DrawerData} />
         </Typography> */}
       </AppBar>
-      <div
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          height: "30%",
-          width: "100%",
-          display: "flex",
-          marginTop: "1%",
-        }}
-      >
-        <CNews data={DemoNews} />
-      </div>
       <div
         style={{
           display: "flex",

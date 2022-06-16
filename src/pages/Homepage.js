@@ -3,31 +3,56 @@ import Headline from "../Components/Headline";
 import Box from "@mui/material/Box";
 import {Grid} from "@mui/material";
 import {Studiumplan} from "../Components/Studiumplan";
+import {TaskList} from "../Components/TaskList";
+import Agenda from "../Components/Agenda";
+import {DemoNews} from "../Demo/Data";
+import Timeline from "../Components/Timeline";
 
 export default function Homepage() {
 
     const [studienplanStatus,setStudienPlanStatus]=React.useState(true);
 
     return(
-        <div style={{height:"100vh",display:"flex",flexDirection:"column"}}>
+        <div style={{height:"100vh",display:"flex",flexDirection:"column",background: "#E6E6E6"}} >
             <div className="headline">
                 <Headline studienplanStatus={studienplanStatus} setStudienPlanStatus={setStudienPlanStatus}></Headline>
             </div>
-            <Box style={{flex:1,marginTop:"2%"}}>
-            <Grid container spacing={2} flex={"1 1 auto"}>
-                <Grid item xs justifyContent={"center"} alignItems={"center"} display={"flex"}>
-                    <h1>Hello</h1>
-                </Grid>
-                <Grid item xs={6} justifyContent={"center"} alignItems={"center"} display={"flex"}>
-                    {
-                        studienplanStatus ? <Studiumplan/> : <div></div>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    margin: "20px",
+                    background: "#E6E6E6",
 
+                }}
+            >
+                <div
+                    style={{
+                        width: "15%",
+                    }}
+                >
+                    <TaskList />
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", width: "55%" }}>
+                    {
+                        studienplanStatus ?
+                            <div style={{background:"white"}}>
+                            <Studiumplan />
+                        </div> : <div></div>
                     }
-                </Grid>
-                <Grid item xs justifyContent={"center"} alignItems={"center"} display={"flex"}>
-                    <h1>Hello</h1>
-                </Grid>
-            </Grid>
-            </Box>
+
+                    <div style={{background:"white",marginTop:"2%"}}>
+                        <h2>Semester 4</h2>
+                        <div>
+                            <Timeline />
+                        </div>
+                    </div>
+                </div>
+                <div style={{ width: "15%" ,background:"white"}}>
+                    <h2>Aufgaben</h2>
+                    <Agenda data={DemoNews} />
+                </div>
+            </div>
     </div>)
 }
