@@ -1,0 +1,98 @@
+:root {
+    --pill-bg: black;
+    --pill-txt: white;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1vw;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    background: #e6e6e6;
+    padding: 1em;
+}
+
+.semester {
+    z-index: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: .4em;
+    font-size: 1.0em;
+    font-weight: bold;
+}
+
+.pill {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 2.4em;
+    padding-left: .9em;
+    padding-right: 0.4em;
+    gap: 0.5em;
+    border-radius: 2em;
+    font-size: 0.5em;
+    font-weight: normal;
+    color: var(--pill-txt);
+    background: var(--pill-bg);
+}
+
+.test {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: .2em .5em;
+    border-radius: 2em;
+    color: var(--pill-bg);
+    background: var(--pill-txt);
+    font-weight: bold;
+}
+
+.connection {
+    position: absolute;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    background: var(--pill-bg);
+    font-weight: bold;
+}
