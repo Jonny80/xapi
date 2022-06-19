@@ -2,18 +2,13 @@ import React, { useEffect } from "react";
 import { DemoNews, DemoSteps, DrawerData } from "../Demo/Data";
 import { AppBar, Container, Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import { Epg, Layout } from "planby";
-
-import { useApp } from "../useApp";
 
 import CDrawer from "../Components/CDrawer";
 import CNews from "../Components/CNews";
 import CStepper from "../Components/CStepper";
 import Agenda from "../Components/Agenda";
 import { Studiumplan } from "../Components/Studiumplan";
-import { Timeline } from "../Components/Timeline";
-import { ChannelItem } from "../Components/ChannelItem";
-import { ProgramItem } from "../Components/ProgrammItem";
+import Timeline from "../Components/Timeline";
 import { TaskList } from "../Components/TaskList";
 
 const authmanager = require("../manager/Authmanager").default.getInstance();
@@ -24,10 +19,8 @@ export default function Demo() {
     console.log(authmanager.userID);
   }, []);
 
-  const { isLoading, getEpgProps, getLayoutProps } = useApp();
-
   return (
-    <div style={{ height: "100%", background: "#E6E6E6" }}>
+    <div style={{ height: "100", background: "#E6E6E6" }}>
       <AppBar
         style={{ alignItems: "center", justifyContent: "center" }}
         position={"static"}
@@ -36,18 +29,6 @@ export default function Demo() {
           <CDrawer style={{}} data={DrawerData} />
         </Typography> */}
       </AppBar>
-      <div
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          height: "30%",
-          width: "100%",
-          display: "flex",
-          marginTop: "1%",
-        }}
-      >
-        <CNews data={DemoNews} />
-      </div>
       <div
         style={{
           display: "flex",
@@ -70,24 +51,7 @@ export default function Demo() {
           <div>
             <h2>Semester 4</h2>
             <div>
-              <div style={{ height: "80vh", width: "100%" }}>
-                <Epg isLoading={isLoading} {...getEpgProps()}>
-                  <Layout
-                    {...getLayoutProps()}
-                    renderTimeline={(props) => <Timeline {...props} />}
-                    renderProgram={({ program, ...rest }) => (
-                      <ProgramItem
-                        key={program.data.id}
-                        program={program}
-                        {...rest}
-                      />
-                    )}
-                    renderChannel={({ channel }) => (
-                      <ChannelItem key={channel.uuid} channel={channel} />
-                    )}
-                  />
-                </Epg>
-              </div>
+              <Timeline />
             </div>
           </div>
         </div>

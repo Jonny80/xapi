@@ -40,7 +40,7 @@ export const Studiumplan = () =>{
         <div className="container" id="pillContainer">
             {
                 data.subjects.map((subjects,index)=>(
-                    newSemester(index,subjects)
+                    newSemester(index+1,subjects)
                 ))
             }
         </div>

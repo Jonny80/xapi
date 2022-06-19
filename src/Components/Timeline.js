@@ -1,48 +1,71 @@
 import React from "react";
 import {
-  TimelineWrapper,
-  TimelineBox,
-  TimelineTime,
-  TimelineDivider,
-  TimelineDividers,
-  useTimeline,
-} from "planby";
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-export function Timeline({
-  isBaseTimeFormat,
-  isSidebar,
-  dayWidth,
-  hourWidth,
-  numberOfHoursInDay,
-  offsetStartHoursRange,
-  sidebarWidth,
-}) {
-  const { time, dividers, formatTime } = useTimeline(
-    numberOfHoursInDay,
-    isBaseTimeFormat
-  );
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-  const renderTime = (index) => (
-    <TimelineBox key={index} width={hourWidth}>
-      <TimelineTime>
-        {formatTime(index + offsetStartHoursRange).toLowerCase()}
-      </TimelineTime>
-      <TimelineDividers>{renderDividers()}</TimelineDividers>
-    </TimelineBox>
-  );
+export const options = {
+  datalabels: {
+    display: false,
+  },
+  indexAxis: "y",
 
-  const renderDividers = () =>
-    dividers.map((_, index) => (
-      <TimelineDivider key={index} width={hourWidth} />
-    ));
+  elements: {
+    bar: {
+      borderWidth: 2,
+    },
+  },
+  x: {
+    title: {
+      display: true,
+      text: "Kalenderwoche",
+    },
+    min: 1,
+    max: 15,
+    ticks: {
+      stepSize: 1,
+    },
+  },
+  responsive: true,
+};
 
-  return (
-    <TimelineWrapper
-      dayWidth={dayWidth}
-      sidebarWidth={sidebarWidth}
-      isSidebar={isSidebar}
-    >
-      {time.map((_, index) => renderTime(index))}
-    </TimelineWrapper>
-  );
+const labels = ["IT I", "SE II", "AVS", "MP", "CGV II", "EMMS", "GIS"];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "",
+      data: [
+        [4, 10],
+        [5, 8],
+        [3, 12],
+        [6, 10],
+        [9, 15],
+        [2, 6],
+        [8, 14],
+      ],
+      backgroundColor: "#171923",
+      borderColor: "#D1D1D1",
+    },
+  ],
+};
+
+export default function Timeline() {
+  return <Bar options={options} data={data} style={{ marginBottom: "50px" }} />;
 }

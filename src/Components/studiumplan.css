@@ -19,7 +19,6 @@ body {
     -webkit-box-pack: space-evenly;
     -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
-    background: #e6e6e6;
     padding: 1em;
 }
 
