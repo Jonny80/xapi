@@ -104,7 +104,8 @@ function setup() {
               "style", 
               "top:"+(18+(connectionThickness/2)+previous*9)+"%;"
               + "left:"+((69+92.4*(i-1))/data.amount)+"%;"
-              + "width:"+(58.2/data.amount+connectionThickness)+"%;"
+              + "width:"+(58.2/data.amount)+"%;"
+              + "padding-right:"+connectionThickness+"em;"
               + "height:"+connectionThickness+"em;");
 
             if (previous < j) {
