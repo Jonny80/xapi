@@ -6,7 +6,6 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
@@ -16,32 +15,46 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
 );
+
 
 export const options = {
   datalabels: {
-    display: false,
+    //display: false,
   },
+
   indexAxis: "y",
+  
+  
 
   elements: {
     bar: {
       borderWidth: 2,
+      borderRadius: Number.MAX_VALUE,
+      borderSkipped: false,
     },
   },
-  x: {
+
+  
+
+  scales: {
+
+    x: {
     title: {
       display: true,
       text: "Kalenderwoche",
-    },
+     },
     min: 1,
     max: 15,
     ticks: {
       stepSize: 1,
     },
   },
+
+  },
+  
   responsive: true,
+
 };
 
 const labels = ["IT I", "SE II", "AVS", "MP", "CGV II", "EMMS", "GIS"];
@@ -50,7 +63,9 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "",
+      label: {
+        display: false
+    },
       data: [
         [4, 10],
         [5, 8],
