@@ -52,58 +52,61 @@ export const Studiumplan = () =>{
 
     return (
         <div className="container" id="pillContainer">
-            {
+            {   // get all semesters
                 data.subjects.map((subjects,index)=>(
                     newSemester(index+1,subjects)
                 ))
             }
             
-            {
+            {   // get all connections between subjects
+                // 1. check if a previous element exists
+                // 2. if it does, go through all previous elements (from semester index - 1)
+                // 3. if code equals one of the codes stored in "previous" create 3 connection
                 data.subjects.map((semester,sindex)=>(
                     semester.map((element, eindex)=>(
-                        (element.previous != null &&
-                        data.subjects[sindex-1].map((prevElem, pindex)=>(
-                            (prevElem.code == element.previous &&
-                            <>
-                            <div className="connection" style={{ 
-                                top: (18.5+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
-                                left: ((69+92.4*(sindex-1))/data.amount)+"%",
-                                width: 58.2/data.amount+"%",
-                                height: connectionThickness+"em",
-                                paddingRight: connectionThickness+"em"}}>
-                            </div>
-                            {
-                                (pindex < eindex &&
-                                    <div className="connection" style={{ 
-                                        top: (18.5+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
-                                        left: ((58.2+69+92.4*(sindex-1))/data.amount)+"%",
-                                        width: connectionThickness+"em",
-                                        height: ((eindex-pindex)*data.maxSubjects)+"%",
-                                        paddingBottom: connectionThickness+"em"}}>
-                                    </div>
-                                ) || (
-                                pindex > eindex &&
-                                    <div className="connection" style={{ 
-                                        top: (18.5+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
-                                        left: (((69+92.4*(sindex))-34.2)/data.amount)+"%",
-                                        width: connectionThickness+"em",
-                                        height: ((pindex-eindex)*data.maxSubjects)+"%",
-                                        paddingBottom: connectionThickness+"em"}}>
-                                    </div>)
-                            }
-                            <div className="connection" style={{ 
-                                top: (18.5+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
-                                right: (100-(69+92.4*(sindex))/data.amount)+"%",
-                                width: 34.2/data.amount+"%",
-                                height: connectionThickness+"em"}}>
-                            </div>
-                            </>
-                            )
-                        ))
-                        )
+                        (element.previous != null && 
+                        element.previous.map((prevCode)=>( 
+                            data.subjects[sindex-1].map((prevElem, pindex)=>(
+                                (prevElem.code == prevCode &&
+                                <>
+                                <div className="connection" style={{ // connection to previous
+                                    top: (18.5-(connectionThickness/2)+pindex*data.maxSubjects)+"%",
+                                    left: ((69+92.4*(sindex-1))/data.amount)+"%",
+                                    width: 58.2/data.amount+"%",
+                                    height: connectionThickness+"em",
+                                    paddingRight: connectionThickness+"em"}}>
+                                </div>
+                                {   // get middle connections depending on position of both subjects
+                                    (pindex < eindex &&
+                                        <div className="connection" style={{ 
+                                            top: (18.5-(connectionThickness/2)+pindex*data.maxSubjects)+"%",
+                                            left: ((58.2+69+92.4*(sindex-1))/data.amount)+"%",
+                                            width: connectionThickness+"em",
+                                            height: ((eindex-pindex)*data.maxSubjects)+"%",
+                                            paddingBottom: connectionThickness+"em"}}>
+                                        </div>
+                                    ) || (
+                                    pindex > eindex &&
+                                        <div className="connection" style={{ 
+                                            top: (18.5-(connectionThickness/2)+eindex*data.maxSubjects)+"%",
+                                            left: (((69+92.4*(sindex))-34.2)/data.amount)+"%",
+                                            width: connectionThickness+"em",
+                                            height: ((pindex-eindex)*data.maxSubjects)+"%",
+                                            paddingBottom: connectionThickness+"em"}}>
+                                        </div>)
+                                }
+                                <div className="connection" style={{ // connection to current
+                                    top: (18.5-(connectionThickness/2)+eindex*data.maxSubjects)+"%",
+                                    right: (100-(69+92.4*(sindex))/data.amount)+"%",
+                                    width: 34.2/data.amount+"%",
+                                    height: connectionThickness+"em"}}>
+                                </div>
+                                </>
+                                )
+                            )))
+                        ))                   
                     ))
                 ))
-
             }
         </div>
     )
