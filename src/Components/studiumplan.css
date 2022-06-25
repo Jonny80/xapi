@@ -3,26 +3,28 @@
     --pill-txt: white;
 }
 
+
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
     font-size: 1vw;
-    -webkit-transition: ease-in-out .5s;
-    transition: ease-in-out .5s;
 }
 
 .container {
-    width: 100%;
+    position: relative;
+    width: 90%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: space-evenly;
     -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
+    background: white;
     padding: 1em;
 }
 
 .semester {
+    z-index: 1;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -77,5 +79,21 @@ body {
     border-radius: 2em;
     color: var(--pill-bg);
     background: var(--pill-txt);
+    font-weight: bold;
+}
+
+.connection {
+    position: absolute;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    background: var(--pill-bg);
     font-weight: bold;
 }

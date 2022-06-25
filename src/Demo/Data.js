@@ -64,11 +64,12 @@ export const DemoNews = [{
     date:"2022-08-01"
 }]
 /**
- * @type {{amount: number, subjects: (Subject[]|*[])[], title: string}}
+ * @type {{amount: number, subjects: (Subject[]|*[])[], title: string, maxSubjects: number}}
  */
 export const Studienplandata = {
     title: "Semester",
     amount: 6,
+    maxSubjects: 0,
     subjects: [
         [
             new Subject("E802", "Elektronik für Medieninformatiker", "EL", 1, [new Test("SP")]),
@@ -82,8 +83,8 @@ export const Studienplandata = {
         ],
         [
             new Subject("E803", "Digitale Signalverarbeitung", "DSV", 2, [new Test("PVL"), new Test("SP")]),
-            new Subject("I310", "Grundlagen der Informatik II", "GdI II", 2, [new Test("SP")]),
-            new Subject("I121", "Programmierung II", "Prog II", 2, [new Test("APL"), new Test("SP")]),
+            new Subject("I310", "Grundlagen der Informatik II", "GdI II", 2, [new Test("SP")], "I110"),
+            new Subject("I121", "Programmierung II", "Prog II", 2, [new Test("APL"), new Test("SP")], "I120"),
             new Subject("I370", "Betriebswirtschaftslehre", "BWL", 2, [new Test("SP")]),
             new Subject("I350", "Grundlagen der Gestaltung", "GdG", 2, [new Test("APL")]),
             new Subject("I140", "Datenbanksysteme I", "DBS I", 2, [new Test("PVL"), new Test("SP")]),
@@ -95,16 +96,16 @@ export const Studienplandata = {
             new Subject("E803", "Digitale Signalverarbeitung", "DSV", 2, [new Test("PVL"), new Test("SP")]),
             new Subject("I310", "Grundlagen der Informatik II", "GdI II", 2, [new Test("SP")]),
             new Subject("I121", "Programmierung II", "Prog II", 2, [new Test("APL"), new Test("SP")]),
-            new Subject("I370", "Betriebswirtschaftslehre", "BWL", 2, [new Test("SP")]),
+            new Subject("I370", "Betriebswirtschaftslehre", "BWL", 2, [new Test("SP")], "S411"),
             new Subject("I350", "Grundlagen der Gestaltung", "GdG", 2, [new Test("APL")]),
             new Subject("I140", "Datenbanksysteme I", "DBS I", 2, [new Test("PVL"), new Test("SP")]),
             new Subject("I380", "Algebra und Höhere Mathematik", "Ma", 2, [new Test("SP")]),
             new Subject("S411", "Englisch B2", "Eng", 2, [new Test("APL"), new Test("APL")]),
             new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")])
         ],
-        [],
-        [],
-        []
+        [new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")])],
+        [new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")])],
+        [new Subject("I381", "Konstruktive Geometrie", "KG", 2, [new Test("SP")])]
 
     ]
 };
