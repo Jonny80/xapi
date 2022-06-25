@@ -73,9 +73,9 @@ export const Studienplandata = {
     subjects: [
         [
             new Subject("E802", "Elektronik für Medieninformatiker", "EL", 1, [new Test("SP")]),
-            new Subject("I110", "Grundlagen der Informatik I", "GdI I", 1, [new Test("APL")]),
-            new Subject("I120", "Programmierung I", "Prog I", 1, [new Test("PVL"), new Test("SP")]),
-            new Subject("I130", "Betriebssysteme I", "BS I", 1, [new Test("PVL"), new Test("SP")]),
+            new Subject("I110", "Grundlagen der Informatik I", "GdI I", 1, [new Test("APL", 2.3)]),
+            new Subject("I120", "Programmierung I", "Prog I", 1, [new Test("PVL"), new Test("SP", 0)]),
+            new Subject("I130", "Betriebssysteme I", "BS I", 1, [new Test("PVL"), new Test("SP", 6)]),
             new Subject("I350", "Grundlagen der Gestaltung", "GdG", 1, []),
             new Subject("I360", "Digitale Bildbearbeitung", "DBB", 1, [new Test("APL")]),
             new Subject("I380", "Algebra und Höhere Mathematik", "Ma", 1, [new Test("SP")]),

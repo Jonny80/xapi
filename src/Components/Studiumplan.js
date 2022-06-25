@@ -1,6 +1,8 @@
 import React from "react";
 import "./studiumplan.css";
 import {Studienplandata as data} from "../Demo/Data";
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const Studiumplan = () =>{
 
@@ -21,8 +23,16 @@ export const Studiumplan = () =>{
                             {
                                 element.tests.map(test=>(
                                     <div className="test">
-                                        <div>{test.type}</div>
-
+                                        {
+                                        ((test.result == "NaN" &&
+                                            <div>{test.type}</div>) ||
+                                         (test.result < 1 &&
+                                            <CheckIcon sx={{fontSize: "1.4em", color: "green"}}/>) ||
+                                         (test.result > 4 &&
+                                            <CloseIcon sx={{fontSize: "1.4em", color: "red"}}/>) ||
+                                         <div>{test.result}</div>
+                                        )
+                                        }
                                     </div>
                                 ))
                             }
@@ -56,7 +66,7 @@ export const Studiumplan = () =>{
                             (prevElem.code == element.previous &&
                             <>
                             <div className="connection" style={{ 
-                                top: (18+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
+                                top: (18.5+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
                                 left: ((69+92.4*(sindex-1))/data.amount)+"%",
                                 width: 58.2/data.amount+"%",
                                 height: connectionThickness+"em",
@@ -65,7 +75,7 @@ export const Studiumplan = () =>{
                             {
                                 (pindex < eindex &&
                                     <div className="connection" style={{ 
-                                        top: (18+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
+                                        top: (18.5+(connectionThickness/2)+pindex*data.maxSubjects)+"%",
                                         left: ((58.2+69+92.4*(sindex-1))/data.amount)+"%",
                                         width: connectionThickness+"em",
                                         height: ((eindex-pindex)*data.maxSubjects)+"%",
@@ -74,7 +84,7 @@ export const Studiumplan = () =>{
                                 ) || (
                                 pindex > eindex &&
                                     <div className="connection" style={{ 
-                                        top: (18+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
+                                        top: (18.5+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
                                         left: (((69+92.4*(sindex))-34.2)/data.amount)+"%",
                                         width: connectionThickness+"em",
                                         height: ((pindex-eindex)*data.maxSubjects)+"%",
@@ -82,7 +92,7 @@ export const Studiumplan = () =>{
                                     </div>)
                             }
                             <div className="connection" style={{ 
-                                top: (18+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
+                                top: (18.5+(connectionThickness/2)+eindex*data.maxSubjects)+"%",
                                 right: (100-(69+92.4*(sindex))/data.amount)+"%",
                                 width: 34.2/data.amount+"%",
                                 height: connectionThickness+"em"}}>
