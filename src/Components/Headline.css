@@ -61,12 +61,51 @@ letter-spacing: -0.02em;
 
 color: #1C1B1F;
 }
-.button{
+#studgang{
     position: absolute;
     top:10px;
     left: 411px;
+
+    padding: 0px 8px;
+gap: 4px;
+color: white ;
+height: 24px;
+background: #1C1B1F;
+border-radius: 50px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+letter-spacing: -0.02em;
+
 }
 #arrow{
     position: absolute;
     top : 0px;
 }
+
+#modulContainer{
+    position:absolute;
+    right:551px; 
+    top:95px; 
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+}
+
+#navModuls1,#navModuls2,#navModuls3,#navModuls4,#navModuls5,#navModuls6,#navModuls7,#navModuls8,#navModuls9{
+    gap: 4px;
+    color: #1C1B1F; 
+    height: 24px;
+    
+    
+   
+}
+
+

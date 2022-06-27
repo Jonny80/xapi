@@ -11,11 +11,12 @@ import Timeline from "../Components/Timeline";
 export default function Homepage() {
 
     const [studienplanStatus,setStudienPlanStatus]=React.useState(true);
+    const [modulNummer,setModulNummer]=React.useState(1);
 
     return(
         <div style={{height:"100vh",display:"flex",flexDirection:"column",background: "#E6E6E6"}} >
             <div className="headline">
-                <Headline studienplanStatus={studienplanStatus} setStudienPlanStatus={setStudienPlanStatus}></Headline>
+                <Headline modulNummer={modulNummer} setModulNummer={setModulNummer}  studienplanStatus={studienplanStatus} setStudienPlanStatus={setStudienPlanStatus}></Headline>
             </div>
             <div
                 style={{
