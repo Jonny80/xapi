@@ -3453,7 +3453,313 @@ Anerkennung von Lernzielen und Prüfungsleistungen
 \end_layout
 
 \begin_layout Section
-TBD
+Implementation
+\end_layout
+
+\begin_layout Subsection
+Was ist react?
+\end_layout
+
+\begin_layout Standard
+React ist eine 2009 von Meta (damals Facebook) veröffentlichte java script
+ library, um fronend Applikationen zu entwickeln.
+ Dabei können Node Pakete von Dritten bei der Entwicklung verwendet werden,
+ welches viele Aspekte dieser wesentliche vereinfacht.
+ React ist komponentenbasiert.
+ 
+\end_layout
+
+\begin_layout Subsection
+Xapi Applikation 
+\end_layout
+
+\begin_layout Subsubsection
+Frontend Aufbau
+\end_layout
+
+\begin_layout Standard
+Die Application is eine Single Page Application (SPA), welche aus folgenden
+ Komponenten besteht.
+ (Komponententree anzeigen).
+ Abgekapselt von dem eigentlichen Anwendugsfall der Applikation, jedoch
+ trotzdem mit einbegriffen ist der Login.
+ Dieser besteht aus dem Login Komponenten und der dazugehörigen Logik, welche
+ mit einem Minio Server kommuniziert um den Nutzer zu verifizieren (siehe
+ oben).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Backend Aufbau
+\end_layout
+
+\begin_layout Standard
+Grundlegende Verwaltungsaufgaben werden von den Manager Klassen im /src/manager
+ Ordner übernommen.
+ Der Authmanager verwaltet den derzeitigen Nutzer.
+ Er hält den Namen sowie dessen, vom Server vergebene, id.
+ Um Persistent zu gewährleisten werden diese Daten über die localstorage
+ API lokal gespeichert.
+ Der Netzwerkmanager übernimmt dass senden und empfangen von Daten über
+ REST Schnittstellen durch die fetch API.
+ Hierbei handelt es sich um Anfragen an den Minio Server um den Nutzer zu
+ verifizieren und perspektivisch um die Kommunikation mit einem Node Server
+ für die xAPI Statements.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Verwendete Pakete
+\end_layout
+
+\begin_layout Standard
+Folgend werden die wichtigsten verwendeten Pakete erwähnt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Verwendung
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Version
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+React
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grundlegende Libary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Material-UI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UI-Framework zum erstellen von UI Komponeneten
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.6.2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chart.js
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erstellen von Diagrammen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+minio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kommunikation mit dem Minio Server
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.0.28
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+node-fetch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+API um REST Schnittstellen anzusteuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.6.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+react-calendar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzeigen und Konfigurieren eines Kalenders
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+react-router
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navigation in der App
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.3.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \end_body
