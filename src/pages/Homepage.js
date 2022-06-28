@@ -7,6 +7,8 @@ import {TaskList} from "../Components/TaskList";
 import Agenda from "../Components/Agenda";
 import {DemoNews} from "../Demo/Data";
 import Timeline from "../Components/Timeline";
+import ModulOverview from "../Components/ModulOverview";
+
 
 export default function Homepage() {
 
@@ -40,7 +42,9 @@ export default function Homepage() {
                         studienplanStatus ?
                             <div style={{background:"white"}}>
                             <Studiumplan />
-                        </div> : <div></div>
+                        </div> : <div>
+                            <ModulOverview></ModulOverview>
+                        </div>
                     }
 
                     <div style={{background:"white",marginTop:"2%"}}>
