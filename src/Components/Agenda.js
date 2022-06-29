@@ -21,6 +21,7 @@ const Agenda = ({ data }) => {
             header={data.header}
             body={data.description}
             date={data.date}
+            box={data.box}
           />
         );
       })}

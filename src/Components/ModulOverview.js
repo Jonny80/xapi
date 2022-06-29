@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Button } from "@mui/material";
+import { Button as button } from "@mui/material";
 
 export default function ModulOverview() {
   var Minio = require("minio");
@@ -75,12 +75,7 @@ export default function ModulOverview() {
       verständnis,
       folien: [
         {
-          Datum: "2020-01-05",
-          Folie: unterlagen,
-          amount: 1,
-        },
-        {
-          Datum: "2020-01-02",
+          Datum: "2022-01-05",
           Folie: unterlagen,
           amount: 1,
         },
@@ -106,8 +101,12 @@ export default function ModulOverview() {
           <TableCell component="th" scope="row">
             {row.KW}
           </TableCell>
-          <TableCell align="right">{row.name}</TableCell>
-          <TableCell align="right">{row.verständnis}</TableCell>
+          <TableCell align="left">{row.name}</TableCell>
+          <TableCell align="right" >
+            <span style={{borderRadius: '999px', padding:'10px', background: row.verständnis.toString().toLowerCase() === 'gut' ? '#67DE49' : row.verständnis.toString().toLowerCase() === 'mittel' ? '#FAC126' : '#F5574C'}}>
+            {row.verständnis}
+            </span>
+            </TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -117,13 +116,6 @@ export default function ModulOverview() {
                   Unterlagen
                 </Typography>
                 <Table size="small" aria-label="purchases">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Datum</TableCell>
-                      <TableCell>Unterlagen</TableCell>
-                      <TableCell align="right">Amount</TableCell>
-                    </TableRow>
-                  </TableHead>
                   <TableBody>
                     {row.folien.map((historyRow) => (
                       <TableRow key={historyRow.Datum}>
@@ -160,25 +152,26 @@ export default function ModulOverview() {
   };
 
   const rows = [
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f134"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f124d"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f1d23fr"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f1fqw"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f1"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f1"),
-    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "f1"),
+    createData(12, "01 Eclipse + LWJGL einrichten", "GUT", "Meilenstein 1"),
+    createData(13, "02 Grundlegendes zu OpenGL", "MITTEL", "Meilenstein 1"),
+    createData(14, "03 Objekte erstellen, speichern und laden", "SCHLECHT", "Meilenstein 1"),
+    createData(15, "04 Buffer-Objects", "GUT", "Meilenstein 1"),
+    createData(16, "05 Spielumgebung schaffen", "GUT", "Meilenstein 1"),
+    createData(17, "06 Kollektive Intelligenz und Schwarmverhalten", "GUT", "Meilenstein 11"),
+    createData(18, "07 Konvolution und Blur-Effekt", "GUT", "Meilenstein 1"),
   ];
 
   return (
-    <div>
-      <div>
-        <TableContainer component={Paper}>
+    <div style={{background:"white", padding: "1rem"}}>
+<h2>I341 Computergrafik/Visualisierung II</h2>
+      <div style={{display: 'flex', justifyContent:"center"}}>
+        <TableContainer component={Paper} style={{width: "80%"}}>
           <Table aria-label="collapsible table">
             <TableHead>
               <TableRow>
                 <TableCell />
                 <TableCell>KW</TableCell>
-                <TableCell align="right">Kapitel</TableCell>
+                <TableCell align="left">Kapitel</TableCell>
                 <TableCell align="right">Verständnis</TableCell>
               </TableRow>
             </TableHead>
@@ -190,11 +183,11 @@ export default function ModulOverview() {
           </Table>
         </TableContainer>
       </div>
-      <div className="buttonbar">
-        <Button onClick={downloadSomeFiles}>
+      <div className="buttonbar" style={{display: 'flex', justifyContent:'space-around'}}>
+        <button onClick={downloadSomeFiles} style={{borderRadius: '999px', background:'#171923', color:'#D1D1D1', padding:'4px', paddingLeft:'10px',paddingRight:'10px', marginTop:'1rem' }}>
           alle Matertialien herunterladen
-        </Button>{" "}
-        <Button>Lernplan generieren</Button>
+        </button>{" "}
+        <button style={{borderRadius: '999px', background:'#171923', color:'#D1D1D1', padding:'4px', paddingLeft:'10px',paddingRight:'10px', marginTop:'1rem' }}>Lernplan generieren</button>
       </div>
     </div>
   );

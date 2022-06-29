@@ -46,22 +46,17 @@ export const DrawerData = [
     }
 ]
 export const DemoNews = [{
-    header:"Hello World",
-    description:"Hello World",
-    date:"2022-05-11"
+    header:"SE II",
+    box:'Aufgabe 1'
 },{
-    header:"I like trains",
-    description: "The TGV only needs 2.5h from Stuttgart to Paris",
-    date:"2022-07-21"
+    header:"AVS",
+    box:'Aufgabe 1'
 },{
-    header:"Where to upload mp3 file",
-    description: "Student does not know where to upload the recorded meeting from last week",
-    date: "2023-02-11"
+    header:"GIS",
+    box:'Aufgabe 1'
 },{
-    header:"Is light Beer beer?",
-    description: "A fierce discussion broke out whether " +
-        "light beer can be considered as real beer rather than lemonade",
-    date:"2022-08-01"
+    header:"IT 1",
+    box:'Aufgabe 1'
 }]
 /**
  * @type {{amount: number, subjects: (Subject[]|*[])[], title: string, maxSubjects: number}}
