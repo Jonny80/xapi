@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  ListItem,
-  ListItemText,
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
@@ -24,34 +20,32 @@ const AgendaItem = ({ header, body, date, box }) => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
   return (
-    <ListItem alignItems="flex-start" className="">
-      <Accordion style={{ marginBottom: "10px", borderRadius: "10px " }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{ color: "#D1D1D1" }} />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          style={{
-            background: "#171923",
-            color: "#D1D1D1",
-            borderRadius: "10px ",
-          }}
-        >
-          <div>
-            <p>{header}</p>
-            <p style={{ fontSize: "11px", marginTop: "-8px" }}>{date}</p>
-          </div>
-        </AccordionSummary>
-        <AccordionDetails>
+    <div style={{display:'flex', justifyContent: 'center', marginBottom:'7px'}} >
+    <Accordion style={{borderRadius:'30px',  width:'90%'}} >
+      <AccordionSummary style={{borderRadius: '30px', background: '#171923', color:'#D1D1C6'}}
+        expandIcon={<ExpandMoreIcon style={{color:'#D1D1C6'}} />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>{header}</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+          {date
+          && <br />
+          }
+          {body
+          && <br />
+          }
           {box && (
             <FormGroup>
               <FormControlLabel control={<Checkbox />} label={box} />
             </FormGroup>
           )}
-
-          <Typography>{body}</Typography>
-        </AccordionDetails>
-      </Accordion>
-    </ListItem>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+  </div>
   );
 };
 
