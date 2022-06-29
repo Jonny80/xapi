@@ -1,101 +1,33 @@
-# Getting Started with Create React App
+# Starten der App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Verfügbare Scripts
 
-In the project directory, you can run:
+Vor dem ersten Starten der Application müssen die benötigten node Module mit 
+### `npm install`
+
+installiert werden.
+
+Bei dependency errors mit der flag. \
+--force (empfohlen): installiert benötigte ressourcen obwohl bereits eine Version dieser lokal gespeichert ist. 
+
+oder 
+
+--legacy-peer-deps : ignoriert peerDependencies. 
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Startet die Applikation im Entwicklungsmodus unter [http://localhost:3000](http://localhost:3000)
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Bildet eine optimierte und komprimierte Version und speichert diese im /build Ordner ab.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Testen der Applikation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Eine fertige Version befindet sich bereits im /build Ordner und kann durch Ausführen der [index.html](build/index.html) getestet werden.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### xApi
-
-can track way more events like clicks, Tab changes etc. then scorm (older version of xapi)
-Needs a LRS (Learning Record Store)
-Stored as JSON (predefined)
-e.g.
-```json
-{
-  "Verb": "test",
-  "Actor": "test",
-  "Object": "test",
-  "Activity": "test",
-  "Additional Properties" : "test"
-}
-```
-
-![ecosystem](res/xAPIMetadata.jpg)
-
-
-LMS (learning management store)
-LRS (Learning record Store)
-
-![ecosystem](res/ecosystem-inlms-500x375.png)
-
-
-
-LRS: 
-[Learning Locker](https://github.com/LearningLocker/learninglocker) (Open Source) (unmaintained)
-[ADL_LRS](https://adlnet.github.io/) (Python based, uses docker, [api](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Communication.md#datatransfer)) 
-[yetanalytics](https://www.sqllrs.com/) (uses docker, [api](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI-Communication.md#datatransfer)) 
+Die Anmeldedaten für den Testuser sind : \
+username: m \
+pw: m
