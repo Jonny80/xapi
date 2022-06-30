@@ -26,7 +26,16 @@ Bildet eine optimierte und komprimierte Version und speichert diese im /build Or
 
 ## Testen der Applikation
 
-Eine fertige Version befindet sich bereits im /build Ordner und kann durch Ausführen der [index.html](build/index.html) getestet werden.
+Eine gebildete Version befindet sich im /app Ordner und ist bereit statisch gehostet zu werden. 
+
+Eine einfache Methode ist mit dem node package [serve](https://www.npmjs.com/package/serve) welches mit dem Befehl
+### `npm intall -g serve`
+
+installiert und mit 
+
+### `serve -s app`
+
+unter [http://localhost:3000](http://localhost:3000) gestartet werden kann.
 
 Die Anmeldedaten für den Testuser sind : \
 username: m \
