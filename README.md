@@ -22,11 +22,11 @@ Startet die Applikation im Entwicklungsmodus unter [http://localhost:3000](http:
 
 ### `npm run build`
 
-Bildet eine optimierte und komprimierte Version und speichert diese im /build Ordner ab.
+Erstellt eine optimierte und komprimierte Version und speichert diese im /build Ordner ab.
 
 ## Testen der Applikation
 
-Eine gebildete Version befindet sich im /app Ordner und ist bereit statisch gehostet zu werden. 
+Eine erstellte Version befindet sich im /app Ordner und ist bereit statisch gehostet zu werden. 
 
 Eine einfache Methode ist mit dem node package [serve](https://www.npmjs.com/package/serve) welches mit dem Befehl
 ### `npm intall -g serve`
