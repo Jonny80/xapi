@@ -35,7 +35,7 @@ function switchModul(v){
         </div>
         <div className='subhead'>
             <p id='name'>043 Medieninformatik</p>
-            <Button  onClick={changeState} id="studgang" variant="text" className="button" endIcon={<KeyboardArrowDownIcon />}>
+            <Button  onClick={changeState} id="studgang" variant="text" className="button" >
                 Studiengangsübersicht
             </Button>
        
