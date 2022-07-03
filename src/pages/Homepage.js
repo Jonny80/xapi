@@ -64,11 +64,11 @@ export default function Homepage() {
               </div>
             ) : (
               <div>
-                <h2 style={{ marginLeft: '10px' }}>Computergrafik/Visualisierung II</h2>
+                <h2 style={{ marginLeft: '10px' }}>Zeitplan</h2>
               </div>
             )}
             <div>
-              <Timeline />
+              <Timeline studienplanStatus={studienplanStatus}/>
             </div>
           </div>
         </div>

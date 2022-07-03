@@ -62,6 +62,12 @@ body {
     background: var(--pill-bg);
 }
 
+.pill:hover {
+    cursor: pointer;
+    background: lightgray;
+    color: black;
+}
+
 .test {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -18,7 +18,7 @@ ChartJS.register(
 );
 
 
-export const options = {
+export let options = {
   datalabels: {
     //display: false,
   },
@@ -57,9 +57,9 @@ export const options = {
 
 };
 
-const labels = ["IT I", "SE II", "AVS", "MP", "CGV II", "EMMS", "GIS"];
+let labels = ["IT I", "SE II", "AVS", "MP", "CGV II", "EMMS", "GIS"];
 
-export const data = {
+export let data = {
   labels,
   datasets: [
     {
@@ -81,6 +81,48 @@ export const data = {
   ],
 };
 
-export default function Timeline() {
+export default function Timeline({studienplanStatus}) {
+  {!studienplanStatus && (
+    labels = ["Vorlesungen", "Beleg 1/2", "Beleg 2/2", "Präsentationen"]
+  )}
+  {studienplanStatus && (
+    labels = ["IT I", "SE II", "AVS", "MP", "CGV II", "EMMS", "GIS"] 
+  )}
+
+  data = {
+    labels,
+    datasets: [
+      {
+        label: {
+          display: false
+      },
+        data: [
+          [4, 10],
+          [5, 8],
+          [3, 12],
+          [6, 10],
+          [9, 15],
+          [2, 6],
+          [8, 14],
+        ],
+        backgroundColor: "#171923",
+        borderColor: "#D1D1D1",
+      },
+    ],
+  }
+
+  {!studienplanStatus && (
+    data.datasets = [
+      {
+        label: {
+          display: false
+      },
+        data: [ [1, 10], [2, 5], [5, 8], [7, 10],],
+        backgroundColor: "#171923",
+        borderColor: "#D1D1D1",
+      },
+    ]
+  )}
+
   return <Bar options={options} data={data} style={{ marginBottom: "50px" }} />;
 }
