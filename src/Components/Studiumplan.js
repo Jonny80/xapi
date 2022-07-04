@@ -27,9 +27,9 @@ export const Studiumplan = () =>{
                                         ((test.result == "NaN" &&
                                             <div>{test.type}</div>) ||
                                          (test.result < 1 &&
-                                            <CheckIcon sx={{fontSize: "1.4em", color: "green"}}/>) ||
+                                            <CheckIcon sx={{fontSize: "1.4em", color: "black"}}/>) ||
                                          (test.result > 4 &&
-                                            <CloseIcon sx={{fontSize: "1.4em", color: "red"}}/>) ||
+                                            <CloseIcon sx={{fontSize: "1.4em", color: "black"}}/>) ||
                                          <div>{test.result}</div>
                                         )
                                         }
@@ -71,7 +71,7 @@ export const Studiumplan = () =>{
                                 <>
                                 <div className="connection" style={{ // connection to previous
                                     top: (18.5-(connectionThickness/2)+pindex*data.maxSubjects)+"%",
-                                    left: ((69+92.4*(sindex-1))/data.amount)+"%",
+                                    left: ((58+92.4*(sindex-1))/data.amount)+"%",
                                     width: 58.2/data.amount+"%",
                                     height: connectionThickness+"em",
                                     paddingRight: connectionThickness+"em"}}>
@@ -80,7 +80,7 @@ export const Studiumplan = () =>{
                                     (pindex < eindex &&
                                         <div className="connection" style={{ 
                                             top: (18.5-(connectionThickness/2)+pindex*data.maxSubjects)+"%",
-                                            left: ((58.2+69+92.4*(sindex-1))/data.amount)+"%",
+                                            left: ((58.2+58+92.4*(sindex-1))/data.amount)+"%",
                                             width: connectionThickness+"em",
                                             height: ((eindex-pindex)*data.maxSubjects)+"%",
                                             paddingBottom: connectionThickness+"em"}}>
@@ -89,7 +89,7 @@ export const Studiumplan = () =>{
                                     pindex > eindex &&
                                         <div className="connection" style={{ 
                                             top: (18.5-(connectionThickness/2)+eindex*data.maxSubjects)+"%",
-                                            left: (((69+92.4*(sindex))-34.2)/data.amount)+"%",
+                                            left: (((58+92.4*(sindex))-34.2)/data.amount)+"%",
                                             width: connectionThickness+"em",
                                             height: ((pindex-eindex)*data.maxSubjects)+"%",
                                             paddingBottom: connectionThickness+"em"}}>
@@ -97,7 +97,7 @@ export const Studiumplan = () =>{
                                 }
                                 <div className="connection" style={{ // connection to current
                                     top: (18.5-(connectionThickness/2)+eindex*data.maxSubjects)+"%",
-                                    right: (100-(69+92.4*(sindex))/data.amount)+"%",
+                                    right: (100-(58+92.4*(sindex))/data.amount)+"%",
                                     width: 34.2/data.amount+"%",
                                     height: connectionThickness+"em"}}>
                                 </div>

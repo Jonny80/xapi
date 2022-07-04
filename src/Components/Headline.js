@@ -49,7 +49,7 @@ function switchModul(v){
         </div>
         {!studienplanStatus &&
             <div id="modulContainer">
-            <Button value={1} onClick={(e)=>{switchModul(e.target.value)}} id="navModuls1">IT I</Button>
+            <Button value={1} onClick={(e)=>{switchModul(e.target.value)}}id="navModuls1">IT I</Button>
             <Button value={2} onClick={(e)=>{switchModul(e.target.value)}}id="navModuls2">SE II</Button>
             <Button value={3} onClick={(e)=>{switchModul(e.target.value)}}id="navModuls3">AVS</Button>
             <Button value={4} onClick={(e)=>{switchModul(e.target.value)}}id="navModuls4">MP</Button>

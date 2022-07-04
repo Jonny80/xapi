@@ -49,7 +49,7 @@ export default function Homepage() {
         <div style={{ display: "flex", flexDirection: "column", width: "55%" }}>
           {studienplanStatus ? (
             <div style={{ background: "white" }}>
-              <Studiumplan />
+              <Studiumplan/>
             </div>
           ) : (
             <div>
